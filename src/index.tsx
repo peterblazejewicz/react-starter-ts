@@ -7,11 +7,16 @@ import Hello from './containers/Hello';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
+import { devToolsEnhancer } from 'redux-devtools-extension';
 
-const store = createStore<StoreState>(enthusiasm, {
-  enthusiasmLevel: 1,
-  languageName: 'TypeScript',
-});
+const store = createStore<StoreState>(
+  enthusiasm,
+  {
+    enthusiasmLevel: 1,
+    languageName: 'TypeScript',
+  },
+  devToolsEnhancer({ name: 'react-starter' }),
+);
 
 ReactDOM.render(
   <Provider store={store}>
